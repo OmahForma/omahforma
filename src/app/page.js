@@ -14,12 +14,13 @@ import { Quote, Star } from "lucide-react";
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState("home");
-  const [popupOpen, setPopupOpen] = useState(false);
-const [popupImage, setPopupImage] = useState("");
+  const [galleryOpen, setGalleryOpen] = useState(false);
+const [galleryImages, setGalleryImages] = useState([]);
+const [galleryIndex, setGalleryIndex] = useState(0);
 const [openFaq, setOpenFaq] = useState(null);
 
   // simple scroll tracking (aman, belum kompleks)
-  useEffect(() => {
+    useEffect(() => {
     const handleScroll = () => {
       const scrollY = window.scrollY;
       if (scrollY < 400) setActiveSection("home");
@@ -28,6 +29,42 @@ const [openFaq, setOpenFaq] = useState(null);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const openGallery = (images, index = 0) => {
+    setGalleryImages(images);
+    setGalleryIndex(index);
+    setGalleryOpen(true);
+  };
+
+  const closeGallery = () => {
+    setGalleryOpen(false);
+  };
+
+  const nextImage = () => {
+    setGalleryIndex((prev) =>
+      prev === galleryImages.length - 1 ? 0 : prev + 1
+    );
+  };
+
+  const prevImage = () => {
+    setGalleryIndex((prev) =>
+      prev === 0 ? galleryImages.length - 1 : prev - 1
+    );
+  };
+
+  useEffect(() => {
+    if (!galleryOpen) return;
+
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") closeGallery();
+      if (e.key === "ArrowRight") nextImage();
+      if (e.key === "ArrowLeft") prevImage();
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [galleryOpen, galleryImages]);
+    
 
   return (
     <main className="bg-[#f7f3ee] text-gray-800">
@@ -298,10 +335,7 @@ const [openFaq, setOpenFaq] = useState(null);
             src={project.images[0]}
             alt={project.title}
             className="w-full h-[260px] sm:h-[360px] md:h-[560px] object-cover rounded-[22px] md:rounded-[34px] cursor-pointer"
-            onClick={() => {
-              setPopupImage(project.images[0]);
-              setPopupOpen(true);
-            }}
+            onClick={() => openGallery(project.images, 0)}
           />
 
           <div className="grid grid-cols-3 gap-3 md:gap-4 mt-3 md:mt-5">
@@ -311,10 +345,7 @@ const [openFaq, setOpenFaq] = useState(null);
                 src={img}
                 alt={`${project.title} ${idx + 1}`}
                 className="w-full h-24 sm:h-32 md:h-40 object-cover rounded-xl md:rounded-2xl border border-[#e7ded2] cursor-pointer hover:scale-[1.02] hover:shadow-lg transition-all duration-300"
-                onClick={() => {
-                  setPopupImage(img);
-                  setPopupOpen(true);
-                }}
+                onClick={() => openGallery(project.images, idx)}
               />
             ))}
           </div>
@@ -1047,27 +1078,76 @@ const [openFaq, setOpenFaq] = useState(null);
 
 </footer>
 {/* ================= POPUP IMAGE ================= */}
-{popupOpen && (
+{/* ================= GALLERY VIEWER ================= */}
+{galleryOpen && galleryImages.length > 0 && (
   <div
-    className="fixed inset-0 bg-black/90 z-[999] flex items-center justify-center"
-    onClick={() => setPopupOpen(false)}
+    className="fixed inset-0 bg-black/95 z-[999] flex flex-col items-center justify-center px-4 py-6"
+    onClick={closeGallery}
   >
-
-    {/* CLOSE */}
     <button
-      className="absolute top-6 right-6 text-white text-4xl"
-      onClick={() => setPopupOpen(false)}
+      className="absolute top-5 right-5 text-white text-4xl z-20"
+      onClick={(e) => {
+        e.stopPropagation();
+        closeGallery();
+      }}
     >
       ×
     </button>
 
-    {/* IMAGE */}
-    <img
-      src={popupImage}
-      className="max-h-[85vh] max-w-[90vw] rounded-2xl shadow-xl"
-      onClick={(e) => e.stopPropagation()}
-    />
+    <button
+      className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 text-white text-5xl z-20 bg-white/10 hover:bg-white/20 rounded-full w-14 h-14 flex items-center justify-center"
+      onClick={(e) => {
+        e.stopPropagation();
+        prevImage();
+      }}
+    >
+      ‹
+    </button>
 
+    <button
+      className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 text-white text-5xl z-20 bg-white/10 hover:bg-white/20 rounded-full w-14 h-14 flex items-center justify-center"
+      onClick={(e) => {
+        e.stopPropagation();
+        nextImage();
+      }}
+    >
+      ›
+    </button>
+
+    <div
+      className="max-w-6xl w-full flex flex-col items-center"
+      onClick={(e) => e.stopPropagation()}
+    >
+      <img
+        src={galleryImages[galleryIndex]}
+        alt="Portfolio OmahForma"
+        className="max-h-[72vh] w-auto max-w-full object-contain rounded-2xl shadow-2xl"
+      />
+
+      <div className="text-white/80 text-sm mt-4">
+        {galleryIndex + 1} / {galleryImages.length}
+      </div>
+
+      <div className="flex gap-3 mt-5 overflow-x-auto max-w-full pb-2">
+        {galleryImages.map((img, idx) => (
+          <button
+            key={idx}
+            onClick={() => setGalleryIndex(idx)}
+            className={`w-20 h-16 md:w-28 md:h-20 rounded-xl overflow-hidden border-2 transition-all ${
+              galleryIndex === idx
+                ? "border-[#c59b5f] scale-105"
+                : "border-white/20 opacity-60 hover:opacity-100"
+            }`}
+          >
+            <img
+              src={img}
+              alt={`Thumbnail ${idx + 1}`}
+              className="w-full h-full object-cover"
+            />
+          </button>
+        ))}
+      </div>
+    </div>
   </div>
 )}
     </main>
