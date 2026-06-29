@@ -1121,7 +1121,7 @@ const [openFaq, setOpenFaq] = useState(null);
       <img
         src={galleryImages[galleryIndex]}
         alt="Portfolio OmahForma"
-        className="max-h-[72vh] w-auto max-w-full object-contain rounded-2xl shadow-2xl"
+        className="max-h-[72vh] w-auto max-w-full object-contain rounded-2xl shadow-2xl transition-opacity duration-300"
       />
 
       <div className="text-white/80 text-sm mt-4">
@@ -1133,10 +1133,10 @@ const [openFaq, setOpenFaq] = useState(null);
           <button
             key={idx}
             onClick={() => setGalleryIndex(idx)}
-            className={`w-20 h-16 md:w-28 md:h-20 rounded-xl overflow-hidden border-2 transition-all ${
+            className={`w-20 h-16 md:w-28 md:h-20 rounded-xl overflow-hidden border-2 transition-all duration-300 ${
               galleryIndex === idx
-                ? "border-[#c59b5f] scale-105"
-                : "border-white/20 opacity-60 hover:opacity-100"
+                ? "border-[#c59b5f] scale-105 shadow-xl opacity-100"
+                : "border-white/20 opacity-60 hover:opacity-100 hover:scale-105"
             }`}
           >
             <img
