@@ -234,13 +234,19 @@ const [openFaq, setOpenFaq] = useState(null);
 
 </section>
 {/* ================= PORTFOLIO ================= */}
-<section id="portfolio" className="py-28">
+<section id="portfolio" className="py-24 md:py-32 bg-[#f7f3ee]">
+  <div className="max-w-7xl mx-auto px-5 md:px-8">
 
-  <div className="max-w-7xl mx-auto px-6">
+    <div className="text-center mb-14 md:mb-20">
+      <p className="uppercase tracking-[5px] text-[#9b7b56] text-xs md:text-sm font-semibold mb-4">
+        Portfolio
+      </p>
 
-    <div className="text-center mb-16">
-      <h2 className="text-6xl md:text-7xl font-bold tracking-tight text-[#1f2937]">Portfolio Kami</h2>
-      <p className="text-lg text-gray-500 mt-5 max-w-xl mx-auto">
+      <h2 className="text-4xl md:text-6xl font-bold tracking-tight text-[#1f2937]">
+        Portfolio Kami
+      </h2>
+
+      <p className="text-base md:text-lg text-gray-500 mt-5 max-w-xl mx-auto">
         Klik gambar untuk melihat detail hasil pekerjaan OmahForma.
       </p>
     </div>
@@ -249,66 +255,71 @@ const [openFaq, setOpenFaq] = useState(null);
       {
         title: "Kitchen Set",
         desc: "Dapur modern, rapih, dan fungsional.",
-       images: [
-  "/image/portfolio/kitchen/kitchen-1.jpg",
-  "/image/portfolio/kitchen/kitchen-2.jpg",
-  "/image/portfolio/kitchen/kitchen-3.jpg",
-],
+        images: [
+          "/image/portfolio/kitchen/kitchen-1.jpg",
+          "/image/portfolio/kitchen/kitchen-2.jpg",
+          "/image/portfolio/kitchen/kitchen-3.jpg",
+        ],
       },
       {
         title: "Backdrop TV",
-        desc: "Ruang keluarga lebih elegan",
-       images: [
-  "/image/portfolio/tv-cabinet/backdrop-1.jpg",
-  "/image/portfolio/tv-cabinet/backdrop-2.jpg",
-  "/image/portfolio/tv-cabinet/backdrop-3.jpg",
-],
+        desc: "Ruang keluarga lebih elegan.",
+        images: [
+          "/image/portfolio/tv-cabinet/backdrop-1.jpg",
+          "/image/portfolio/tv-cabinet/backdrop-2.jpg",
+          "/image/portfolio/tv-cabinet/backdrop-3.jpg",
+        ],
       },
       {
         title: "Bedroom Set",
-        desc: "Kamar nyaman & minimalis",
-       images: [
-  "/image/portfolio/bedroom/bedroom-1.jpg",
-  "/image/portfolio/bedroom/bedroom-2.jpg",
-  "/image/portfolio/bedroom/bedroom-3.jpg",
-],
+        desc: "Kamar nyaman dan minimalis.",
+        images: [
+          "/image/portfolio/bedroom/bedroom-1.jpg",
+          "/image/portfolio/bedroom/bedroom-2.jpg",
+          "/image/portfolio/bedroom/bedroom-3.jpg",
+        ],
       },
     ].map((project, i) => (
-      <div key={i} className="mb-28 group">
+      <div key={i} className="mb-20 md:mb-28">
 
-        <h3 className="text-4xl md:text-5xl font-bold tracking-tight text-[#1f2937] mb-3">
-          {project.title}
-        </h3>
+        <div className="mb-6 md:mb-8">
+          <h3 className="text-3xl md:text-5xl font-bold tracking-tight text-[#1f2937] mb-3">
+            {project.title}
+          </h3>
 
-        <p className="text-lg text-gray-500 mb-8">
-          {project.desc}
-        </p>
-
-        {/* MAIN IMAGE */}
-        <img
-          src={project.images[0]}
-          className="w-full h-[520px] object-cover rounded-[42px] shadow-[0_30px_90px_rgba(0,0,0,.14)] hover:shadow-[0_45px_120px_rgba(0,0,0,.20)] transition-all duration-500 mb-5 cursor-pointer"
-          onClick={() => {
-            setPopupImage(project.images[0]);
-            setPopupOpen(true);
-          }}
-        />
-
-        {/* THUMBNAILS */}
-        <div className="grid grid-cols-3 gap-4">
-          {project.images.map((img, idx) => (
-            <img
-              key={idx}
-              src={img}
-              className="w-full h-32 object-cover rounded-2xl border border-[#e7ded2] cursor-pointer hover:scale-[1.03] hover:shadow-xl transition-all duration-300"
-              onClick={() => {
-                setPopupImage(img);
-                setPopupOpen(true);
-              }}
-            />
-          ))}
+          <p className="text-base md:text-lg text-gray-500">
+            {project.desc}
+          </p>
         </div>
 
+        <div className="bg-white rounded-[28px] md:rounded-[42px] p-3 md:p-5 border border-[#e7ded2] shadow-[0_24px_70px_rgba(0,0,0,.10)]">
+
+          <img
+            src={project.images[0]}
+            alt={project.title}
+            className="w-full h-[260px] sm:h-[360px] md:h-[560px] object-cover rounded-[22px] md:rounded-[34px] cursor-pointer"
+            onClick={() => {
+              setPopupImage(project.images[0]);
+              setPopupOpen(true);
+            }}
+          />
+
+          <div className="grid grid-cols-3 gap-3 md:gap-4 mt-3 md:mt-5">
+            {project.images.map((img, idx) => (
+              <img
+                key={idx}
+                src={img}
+                alt={`${project.title} ${idx + 1}`}
+                className="w-full h-24 sm:h-32 md:h-40 object-cover rounded-xl md:rounded-2xl border border-[#e7ded2] cursor-pointer hover:scale-[1.02] hover:shadow-lg transition-all duration-300"
+                onClick={() => {
+                  setPopupImage(img);
+                  setPopupOpen(true);
+                }}
+              />
+            ))}
+          </div>
+
+        </div>
       </div>
     ))}
   </div>
