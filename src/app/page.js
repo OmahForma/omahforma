@@ -249,29 +249,29 @@ const [openFaq, setOpenFaq] = useState(null);
       {
         title: "Kitchen Set",
         desc: "Dapur modern, rapih, dan fungsional.",
-        images: [
-          "/portfolio/kitchen/kitchen-1.jpg",
-          "/portfolio/kitchen/kitchen-2.jpg",
-          "/portfolio/kitchen/kitchen-3.jpg",
-        ],
+       images: [
+  "/image/portfolio/kitchen/kitchen-1.jpg",
+  "/image/portfolio/kitchen/kitchen-2.jpg",
+  "/image/portfolio/kitchen/kitchen-3.jpg",
+],
       },
       {
         title: "Backdrop TV",
         desc: "Ruang keluarga lebih elegan",
-        images: [
-          "/portfolio/tv/backdrop-1.jpg",
-          "/portfolio/tv/backdrop-2.jpg",
-          "/portfolio/tv/backdrop-3.jpg",
-        ],
+       images: [
+  "/image/portfolio/tv-cabinet/backdrop-1.jpg",
+  "/image/portfolio/tv-cabinet/backdrop-2.jpg",
+  "/image/portfolio/tv-cabinet/backdrop-3.jpg",
+],
       },
       {
         title: "Bedroom Set",
         desc: "Kamar nyaman & minimalis",
-        images: [
-          "/portfolio/bedroom/bedroom-1.jpg",
-          "/portfolio/bedroom/bedroom-2.jpg",
-          "/portfolio/bedroom/bedroom-3.jpg",
-        ],
+       images: [
+  "/image/portfolio/bedroom/bedroom-1.jpg",
+  "/image/portfolio/bedroom/bedroom-2.jpg",
+  "/image/portfolio/bedroom/bedroom-3.jpg",
+],
       },
     ].map((project, i) => (
       <div key={i} className="mb-28 group">
