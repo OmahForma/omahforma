@@ -806,7 +806,7 @@ const [openFaq, setOpenFaq] = useState(null);
 
     {/* CTA BUTTON */}
     <a
-      href="https://wa.me/6289515104010"
+      href="https://wa.me/62895634070878?text=Halo%20OmahForma%2C%20saya%20ingin%20konsultasi%20interior%20custom."
       target="_blank"
       rel="noopener noreferrer"
       onClick={() => {
@@ -1044,7 +1044,7 @@ const [openFaq, setOpenFaq] = useState(null);
             WhatsApp
             <br />
             <a
-              href="https://wa.me/6289515104010"
+              href="https://wa.me/62895634070878?text=Halo%20OmahForma%2C%20saya%20ingin%20konsultasi%20interior%20custom."
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-[#c8a06b] transition-all duration-300"
