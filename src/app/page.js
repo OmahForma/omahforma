@@ -715,7 +715,7 @@ const [openFaq, setOpenFaq] = useState(null);
     ].map((faq, i) => (
       <div
   key={i}
-  className="group bg-[#f7f3ee] rounded-[30px] border border-[#e9dfd3] shadow-[0_14px_40px_rgba(0,0,0,.06)] hover:border-[#d8c4ab] hover:-translate-y-1 hover:shadow-[0_24px_60px_rgba(0,0,0,.10)] transition-all duration-500 overflow-hidden"
+  className="group border-b border-[#e9dfd3] md:bg-[#f7f3ee] md:rounded-[30px] md:border md:shadow-[0_14px_40px_rgba(0,0,0,.06)] md:hover:border-[#d8c4ab] md:hover:-translate-y-1 md:hover:shadow-[0_24px_60px_rgba(0,0,0,.10)] transition-all duration-300 overflow-hidden"
 >
 
         {/* QUESTION BUTTON */}
@@ -723,13 +723,13 @@ const [openFaq, setOpenFaq] = useState(null);
           onClick={() =>
             setOpenFaq(openFaq === i ? null : i)
           }
-          className="w-full flex justify-between items-center px-4 py-3 md:px-6 md:py-5 text-left hover:bg-gray-50 transition"
+          className="w-full flex justify-between items-center px-1 py-2.5 md:px-6 md:py-5 text-left hover:bg-black/[0.02] transition"
         >
-          <span className="font-semibold text-gray-800">
+          <span className="font-medium text-[14px] leading-snug md:text-base md:font-semibold text-gray-800 pr-4">
             {faq[0]}
           </span>
 
-         <span className="text-[30px] text-[#9b7b56] transition-all duration-500 group-hover:rotate-90">
+         <span className="text-xl md:text-[30px] text-[#9b7b56] transition-all duration-300">
             {openFaq === i ? "−" : "+"}
           </span>
         </button>
@@ -737,7 +737,7 @@ const [openFaq, setOpenFaq] = useState(null);
         {/* ANSWER (HIDDEN DEFAULT) */}
         <div
           
-         className={`border-t border-[#e9dfd3] pl-14 pr-8 pt-2 md:pt-4 pb-7 text-gray-500 leading-8 transition-all duration-500 overflow-hidden ${
+         className={`border-t border-[#e9dfd3] px-1 pt-2 pb-3 md:pl-14 md:pr-8 md:pt-4 md:pb-7 text-sm md:text-base text-gray-500 leading-6 md:leading-8 transition-all duration-300 overflow-hidden ${
   openFaq === i
     ? "max-h-40 opacity-100"
     : "max-h-0 pt-0 pb-0 opacity-0"
