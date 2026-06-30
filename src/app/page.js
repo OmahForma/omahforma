@@ -424,7 +424,7 @@ const [openFaq, setOpenFaq] = useState(null);
 </section>
 
 {/* ================= LAYANAN ================= */}
-<section id="services" className="py-32 bg-[#f7f3ee]">
+<section id="services" className="py-16 md:py-32 bg-[#f7f3ee]">
   <div className="max-w-[1500px] mx-auto px-8">
 
     <div className="text-center mb-20">
@@ -498,7 +498,7 @@ const [openFaq, setOpenFaq] = useState(null);
   </div>
 </section>
 {/* ================= PROSES KERJA ================= */}
-<section className="py-32 bg-white">
+<section className="py-16 md:py-32 bg-white">
   <div className="max-w-[1200px] mx-auto px-6">
 
     <div className="text-center mb-20">
@@ -583,7 +583,7 @@ const [openFaq, setOpenFaq] = useState(null);
   </div>
 </section>
 {/* ================= TESTIMONI (FINAL CONVERSION TRUST) ================= */}
-<section id="testimoni" className="py-14 md:py-28 bg-[#f7f3ee]">
+<section id="testimoni" className="py-16 md:py-28 bg-[#f7f3ee]">
 
   <div className="max-w-7xl mx-auto px-6">
 
@@ -677,7 +677,7 @@ const [openFaq, setOpenFaq] = useState(null);
 </section>
 
 {/* ================= FAQ (FINAL ACCORDION CLOSED DEFAULT) ================= */}
-<section id="faq" className="py-14 md:py-28 bg-white">
+<section id="faq" className="py-14 md:py-28 bg-white"><section id="faq" className="py-14 md:py-28 bg-white">
   <div className="max-w-4xl mx-auto px-6">
 <p className="uppercase tracking-[6px] text-[#9b7b56] text-sm font-semibold mb-5">
   FAQ OmahForma
@@ -754,7 +754,7 @@ const [openFaq, setOpenFaq] = useState(null);
 {/* ================= CTA FINAL ================= */}
 <section
   id="contact"
-  className="relative overflow-hidden py-32 bg-[#1f2937] text-white"
+  className="relative overflow-hidden py-16 md:py-32 bg-[#1f2937] text-white"
 >
 
   {/* Background Decoration */}
@@ -832,7 +832,7 @@ const [openFaq, setOpenFaq] = useState(null);
 {/* ================= LOKASI ================= */}
 <section
   id="lokasi"
-  className="py-32 bg-gradient-to-b from-[#faf8f5] to-white"
+  className="py-16 md:py-32 bg-gradient-to-b from-[#faf8f5] to-white"
 >
   <div className="max-w-7xl mx-auto px-6">
 
