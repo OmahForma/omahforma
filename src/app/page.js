@@ -677,7 +677,7 @@ const [openFaq, setOpenFaq] = useState(null);
 </section>
 
 {/* ================= FAQ (FINAL ACCORDION CLOSED DEFAULT) ================= */}
-<section id="faq" className="py-14 md:py-28 bg-white"><section id="faq" className="py-14 md:py-28 bg-white">
+<section id="faq" className="py-14 md:py-28 bg-white">
   <div className="max-w-4xl mx-auto px-6">
 <p className="uppercase tracking-[6px] text-[#9b7b56] text-sm font-semibold mb-5">
   FAQ OmahForma
@@ -944,8 +944,7 @@ const [openFaq, setOpenFaq] = useState(null);
           alt="OmahForma Living Studio"
           width={500}
           height={140}
-          className="w-auto h-20 object-contain"
-          className="-mt-2 mb-10"
+          className="w-auto h-20 object-contain -mt-2 mb-10"
         />
 
         <p className="mt-8 text-gray-400 leading-10 max-w-[270px]">
@@ -1077,24 +1076,23 @@ const [openFaq, setOpenFaq] = useState(null);
   </div>
 
 </footer>
-{/* ================= POPUP IMAGE ================= */}
 {/* ================= GALLERY VIEWER ================= */}
 {galleryOpen && galleryImages.length > 0 && (
   <div
     className="fixed inset-0 bg-black/95 z-[999] flex flex-col items-center justify-center px-4 py-6"
     onClick={closeGallery}
     onTouchStart={(e) => setTouchStart(e.touches[0].clientX)}
-onTouchEnd={(e) => {
-  if (touchStart === null) return;
+    onTouchEnd={(e) => {
+      if (touchStart === null) return;
 
-  const touchEnd = e.changedTouches[0].clientX;
-  const distance = touchStart - touchEnd;
+      const touchEnd = e.changedTouches[0].clientX;
+      const distance = touchStart - touchEnd;
 
-  if (distance > 60) nextImage();
-  if (distance < -60) prevImage();
+      if (distance > 60) nextImage();
+      if (distance < -60) prevImage();
 
-  setTouchStart(null);
-}}
+      setTouchStart(null);
+    }}
   >
     <button
       className="absolute top-5 right-5 text-white text-4xl z-20"
@@ -1103,34 +1101,32 @@ onTouchEnd={(e) => {
         closeGallery();
       }}
     >
-  ×
-</button>
+      ×
+    </button>
 
-{galleryImages.length > 1 && (
-<button
-  className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 text-white text-5xl z-20 bg-white/10 hover:bg-white/20 rounded-full w-14 h-14 flex items-center justify-center"
-  onClick={(e) => {
-    e.stopPropagation();
-    prevImage();
-  }}
->
-  ‹
-</button>
-)}
+    {galleryImages.length > 1 && (
+      <button
+        className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 text-white text-5xl z-20 bg-white/10 hover:bg-white/20 rounded-full w-14 h-14 flex items-center justify-center"
+        onClick={(e) => {
+          e.stopPropagation();
+          prevImage();
+        }}
+      >
+        ‹
+      </button>
+    )}
 
-
-
-{galleryImages.length > 1 && (
-<button
-  className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 text-white text-5xl z-20 bg-white/10 hover:bg-white/20 rounded-full w-14 h-14 flex items-center justify-center"
-  onClick={(e) => {
-    e.stopPropagation();
-    nextImage();
-  }}
->
-  ›
-</button>
-)}
+    {galleryImages.length > 1 && (
+      <button
+        className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 text-white text-5xl z-20 bg-white/10 hover:bg-white/20 rounded-full w-14 h-14 flex items-center justify-center"
+        onClick={(e) => {
+          e.stopPropagation();
+          nextImage();
+        }}
+      >
+        ›
+      </button>
+    )}
 
     <div
       className="max-w-6xl w-full flex flex-col items-center"
