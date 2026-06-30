@@ -1049,7 +1049,7 @@ const [openFaq, setOpenFaq] = useState(null);
               rel="noopener noreferrer"
               className="hover:text-[#c8a06b] transition-all duration-300"
             >
-              0895-1510-4010
+              0895-6340-70878
             </a>
           </p>
 
