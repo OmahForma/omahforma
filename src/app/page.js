@@ -17,6 +17,8 @@ export default function Home() {
   const [galleryOpen, setGalleryOpen] = useState(false);
 const [galleryImages, setGalleryImages] = useState([]);
 const [galleryIndex, setGalleryIndex] = useState(0);
+const [touchStart, setTouchStart] = useState(null);
+const [zoom, setZoom] = useState(1);
 const [openFaq, setOpenFaq] = useState(null);
 
   // simple scroll tracking (aman, belum kompleks)
@@ -37,16 +39,21 @@ const [openFaq, setOpenFaq] = useState(null);
   };
 
   const closeGallery = () => {
-    setGalleryOpen(false);
-  };
+  setGalleryOpen(false);
+  setZoom(1);
+};
 
   const nextImage = () => {
+    setZoom(1);
+
     setGalleryIndex((prev) =>
       prev === galleryImages.length - 1 ? 0 : prev + 1
     );
   };
 
   const prevImage = () => {
+    setZoom(1);
+    
     setGalleryIndex((prev) =>
       prev === 0 ? galleryImages.length - 1 : prev - 1
     );
@@ -271,10 +278,10 @@ const [openFaq, setOpenFaq] = useState(null);
 
 </section>
 {/* ================= PORTFOLIO ================= */}
-<section id="portfolio" className="py-24 md:py-32 bg-[#f7f3ee]">
+<section id="portfolio" className="pt-14 pb-0 md:pt-24 md:pb-4 bg-[#f7f3ee]">
   <div className="max-w-7xl mx-auto px-5 md:px-8">
 
-    <div className="text-center mb-14 md:mb-20">
+    <div className="text-center mb-12 md:mb-20">
       <p className="uppercase tracking-[5px] text-[#9b7b56] text-xs md:text-sm font-semibold mb-4">
         Portfolio
       </p>
@@ -317,8 +324,10 @@ const [openFaq, setOpenFaq] = useState(null);
         ],
       },
     ].map((project, i) => (
-      <div key={i} className="mb-20 md:mb-28">
-
+      <div
+        key={i}
+        className={i === 2 ? "mb-0" : "mb-12 md:mb-20"}
+      >
         <div className="mb-6 md:mb-8">
           <h3 className="text-3xl md:text-5xl font-bold tracking-tight text-[#1f2937] mb-3">
             {project.title}
@@ -330,11 +339,10 @@ const [openFaq, setOpenFaq] = useState(null);
         </div>
 
         <div className="bg-white rounded-[28px] md:rounded-[42px] p-3 md:p-5 border border-[#e7ded2] shadow-[0_24px_70px_rgba(0,0,0,.10)]">
-
           <img
             src={project.images[0]}
             alt={project.title}
-            className="w-full h-[260px] sm:h-[360px] md:h-[560px] object-cover rounded-[22px] md:rounded-[34px] cursor-pointer"
+            className="w-full h-[220px] sm:h-[300px] md:h-[560px] object-cover rounded-[22px] md:rounded-[34px] cursor-pointer"
             onClick={() => openGallery(project.images, 0)}
           />
 
@@ -349,19 +357,17 @@ const [openFaq, setOpenFaq] = useState(null);
               />
             ))}
           </div>
-
         </div>
       </div>
     ))}
   </div>
 </section>
-{/* ================= KEUNGGULAN ================= */}
-<section className="py-32 bg-gradient-to-b from-[#f7f3ee] via-white to-white">
 
+{/* ================= KEUNGGULAN ================= */}
+<section className="pt-6 pb-16 md:pt-10 md:pb-28 bg-gradient-to-b from-[#f7f3ee] via-white to-white">
   <div className="max-w-7xl mx-auto px-6">
 
-    <div className="text-center mb-16">
-
+    <div className="text-center mb-10 md:mb-16">
       <p className="uppercase tracking-[6px] text-[#9b7b56] text-sm font-semibold mb-5">
         Kenapa Memilih Kami
       </p>
@@ -374,55 +380,49 @@ const [openFaq, setOpenFaq] = useState(null);
         Kami membantu menciptakan ruang yang nyaman, fungsional,
         dan sesuai kebutuhan aktivitas sehari-hari.
       </p>
-
     </div>
 
     <div className="grid md:grid-cols-3 gap-10">
-
-      <div className="bg-[#f7f3ee] p-10 rounded-[36px] shadow-[0_18px_50px_rgba(0,0,0,.08)] border border-[#e9dfd3] group hover:-translate-y-2 hover:shadow-[0_28px_70px_rgba(0,0,0,.12)]hover:border-[#d8c4ab] transition-all duration-500">
+      <div className="bg-[#f7f3ee] p-10 rounded-[36px] shadow-[0_18px_50px_rgba(0,0,0,.08)] border border-[#e9dfd3] group hover:-translate-y-2 hover:shadow-[0_28px_70px_rgba(0,0,0,.12)] hover:border-[#d8c4ab] transition-all duration-500">
         <div className="mb-6 w-16 h-16 rounded-2xl bg-[#9b7b56]/8 flex items-center justify-center text-[#9b7b56] text-2xl transition-all duration-300 group-hover:bg-[#9b7b56] group-hover:text-white">
-  <Sparkles size={30} strokeWidth={2} />
-</div>
+          <Sparkles size={30} strokeWidth={2} />
+        </div>
         <h3 className="text-2xl font-semibold mb-4 transition-colors duration-500 group-hover:text-[#9b7b56]">
           Custom Design
         </h3>
-
         <p className="text-gray-600 transition-colors duration-500 group-hover:text-gray-700">
           Semua desain disesuaikan dengan ukuran dan kebutuhan ruang Anda.
         </p>
       </div>
 
-      <div className="bg-[#f7f3ee] p-10 rounded-[36px] shadow-[0_18px_50px_rgba(0,0,0,.08)] border border-[#e9dfd3] group hover:-translate-y-2 hover:shadow-[0_28px_70px_rgba(0,0,0,.12)]hover:border-[#d8c4ab] transition-all duration-500">
-       <div className="mb-6 w-16 h-16 rounded-2xl bg-[#9b7b56]/8 flex items-center justify-center text-[#9b7b56] text-2xl transition-all duration-300 group-hover:bg-[#9b7b56] group-hover:text-white">
-  <ShieldCheck size={30}  strokeWidth={2}/>
-</div> 
+      <div className="bg-[#f7f3ee] p-10 rounded-[36px] shadow-[0_18px_50px_rgba(0,0,0,.08)] border border-[#e9dfd3] group hover:-translate-y-2 hover:shadow-[0_28px_70px_rgba(0,0,0,.12)] hover:border-[#d8c4ab] transition-all duration-500">
+        <div className="mb-6 w-16 h-16 rounded-2xl bg-[#9b7b56]/8 flex items-center justify-center text-[#9b7b56] text-2xl transition-all duration-300 group-hover:bg-[#9b7b56] group-hover:text-white">
+          <ShieldCheck size={30} strokeWidth={2} />
+        </div>
         <h3 className="text-2xl font-semibold mb-4 transition-colors duration-500 group-hover:text-[#9b7b56]">
           Material Berkualitas
         </h3>
-
         <p className="text-gray-600 transition-colors duration-500 group-hover:text-gray-700">
           Menggunakan multipleks dan finishing berkualitas untuk hasil tahan lama.
         </p>
       </div>
 
-      <div className="bg-[#f7f3ee] p-10 rounded-[36px] shadow-[0_18px_50px_rgba(0,0,0,.08)] border border-[#e9dfd3] group hover:-translate-y-2 hover:shadow-[0_28px_70px_rgba(0,0,0,.12)]hover:border-[#d8c4ab] transition-all duration-500">
-       <div className="mb-6 w-16 h-16 rounded-2xl bg-[#9b7b56]/8 flex items-center justify-center text-[#9b7b56] text-2xl transition-all duration-300 group-hover:bg-[#9b7b56] group-hover:text-white">
-  <MessageCircle size={30} strokeWidth={2}  />
-</div>
+      <div className="bg-[#f7f3ee] p-10 rounded-[36px] shadow-[0_18px_50px_rgba(0,0,0,.08)] border border-[#e9dfd3] group hover:-translate-y-2 hover:shadow-[0_28px_70px_rgba(0,0,0,.12)] hover:border-[#d8c4ab] transition-all duration-500">
+        <div className="mb-6 w-16 h-16 rounded-2xl bg-[#9b7b56]/8 flex items-center justify-center text-[#9b7b56] text-2xl transition-all duration-300 group-hover:bg-[#9b7b56] group-hover:text-white">
+          <MessageCircle size={30} strokeWidth={2} />
+        </div>
         <h3 className="text-2xl font-semibold mb-4 transition-colors duration-500 group-hover:text-[#9b7b56]">
           Harga Transparan
         </h3>
-
         <p className="text-gray-600 transition-colors duration-500 group-hover:text-gray-700">
           Estimasi biaya jelas sebelum produksi dimulai.
         </p>
       </div>
-
     </div>
 
   </div>
-
 </section>
+
 {/* ================= LAYANAN ================= */}
 <section id="services" className="py-32 bg-[#f7f3ee]">
   <div className="max-w-[1500px] mx-auto px-8">
@@ -583,7 +583,7 @@ const [openFaq, setOpenFaq] = useState(null);
   </div>
 </section>
 {/* ================= TESTIMONI (FINAL CONVERSION TRUST) ================= */}
-<section id="testimoni" className="py-28 bg-[#f7f3ee]">
+<section id="testimoni" className="py-14 md:py-28 bg-[#f7f3ee]">
 
   <div className="max-w-7xl mx-auto px-6">
 
@@ -677,7 +677,7 @@ const [openFaq, setOpenFaq] = useState(null);
 </section>
 
 {/* ================= FAQ (FINAL ACCORDION CLOSED DEFAULT) ================= */}
-<section id="faq" className="py-28 bg-white">
+<section id="faq" className="py-14 md:py-28 bg-white">
   <div className="max-w-4xl mx-auto px-6">
 <p className="uppercase tracking-[6px] text-[#9b7b56] text-sm font-semibold mb-5">
   FAQ OmahForma
@@ -723,7 +723,7 @@ const [openFaq, setOpenFaq] = useState(null);
           onClick={() =>
             setOpenFaq(openFaq === i ? null : i)
           }
-          className="w-full flex justify-between items-center p-6 text-left hover:bg-gray-50 transition"
+          className="w-full flex justify-between items-center px-4 py-3 md:px-6 md:py-5 text-left hover:bg-gray-50 transition"
         >
           <span className="font-semibold text-gray-800">
             {faq[0]}
@@ -737,7 +737,7 @@ const [openFaq, setOpenFaq] = useState(null);
         {/* ANSWER (HIDDEN DEFAULT) */}
         <div
           
-         className={`border-t border-[#e9dfd3] pl-14 pr-8 pt-8 pb-7 text-gray-500 leading-8 transition-all duration-500 overflow-hidden ${
+         className={`border-t border-[#e9dfd3] pl-14 pr-8 pt-2 md:pt-4 pb-7 text-gray-500 leading-8 transition-all duration-500 overflow-hidden ${
   openFaq === i
     ? "max-h-40 opacity-100"
     : "max-h-0 pt-0 pb-0 opacity-0"
@@ -1083,6 +1083,18 @@ const [openFaq, setOpenFaq] = useState(null);
   <div
     className="fixed inset-0 bg-black/95 z-[999] flex flex-col items-center justify-center px-4 py-6"
     onClick={closeGallery}
+    onTouchStart={(e) => setTouchStart(e.touches[0].clientX)}
+onTouchEnd={(e) => {
+  if (touchStart === null) return;
+
+  const touchEnd = e.changedTouches[0].clientX;
+  const distance = touchStart - touchEnd;
+
+  if (distance > 60) nextImage();
+  if (distance < -60) prevImage();
+
+  setTouchStart(null);
+}}
   >
     <button
       className="absolute top-5 right-5 text-white text-4xl z-20"
@@ -1091,34 +1103,41 @@ const [openFaq, setOpenFaq] = useState(null);
         closeGallery();
       }}
     >
-      ×
-    </button>
+  ×
+</button>
 
-    <button
-      className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 text-white text-5xl z-20 bg-white/10 hover:bg-white/20 rounded-full w-14 h-14 flex items-center justify-center"
-      onClick={(e) => {
-        e.stopPropagation();
-        prevImage();
-      }}
-    >
-      ‹
-    </button>
+{galleryImages.length > 1 && (
+<button
+  className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 text-white text-5xl z-20 bg-white/10 hover:bg-white/20 rounded-full w-14 h-14 flex items-center justify-center"
+  onClick={(e) => {
+    e.stopPropagation();
+    prevImage();
+  }}
+>
+  ‹
+</button>
+)}
 
-    <button
-      className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 text-white text-5xl z-20 bg-white/10 hover:bg-white/20 rounded-full w-14 h-14 flex items-center justify-center"
-      onClick={(e) => {
-        e.stopPropagation();
-        nextImage();
-      }}
-    >
-      ›
-    </button>
+
+
+{galleryImages.length > 1 && (
+<button
+  className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 text-white text-5xl z-20 bg-white/10 hover:bg-white/20 rounded-full w-14 h-14 flex items-center justify-center"
+  onClick={(e) => {
+    e.stopPropagation();
+    nextImage();
+  }}
+>
+  ›
+</button>
+)}
 
     <div
       className="max-w-6xl w-full flex flex-col items-center"
       onClick={(e) => e.stopPropagation()}
     >
       <img
+        key={galleryIndex}
         src={galleryImages[galleryIndex]}
         alt="Portfolio OmahForma"
         className="max-h-[72vh] w-auto max-w-full object-contain rounded-2xl shadow-2xl transition-opacity duration-300"
