@@ -80,15 +80,15 @@ const [openFaq, setOpenFaq] = useState(null);
 <header className="fixed top-0 left-0 w-full z-50 bg-[#f7f3ee]/90 backdrop-blur-xl border-b border-black/5">
   <div className="max-w-7xl mx-auto px-5 md:px-8 h-24 flex items-center justify-between">
 
-    <a href="#home" className="flex items-center">
+    <a href="#home" className="flex items-center w-[280px] md:w-[360px]">
   <Image
-  src="/image/logo/logo-transparan.png"
-  alt="OmahForma Living Studio"
-  width={420}
-  height={110}
-  priority
-  className="h-20 w-auto object-contain transition-all duration-300"
-/>
+    src="/image/logo/OmahForma-logo-horisontal-light.png"
+    alt="OmahForma Living Studio"
+    width={900}
+    height={220}
+    priority
+    className="w-full h-auto object-contain"
+  />
 </a>
 
     <nav className="hidden md:flex items-center gap-10 text-sm font-medium text-[#1f2937]">
@@ -940,7 +940,7 @@ const [openFaq, setOpenFaq] = useState(null);
       <div>
 
         <Image
-          src="/image/logo/logo-transparan1.png"
+          src="/image/logo/OmahForma-logo-horisontal-dark.png"
           alt="OmahForma Living Studio"
           width={500}
           height={140}

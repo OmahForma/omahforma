@@ -13,27 +13,58 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "OmahForma - Jasa Interior Custom Yogyakarta",
+  metadataBase: new URL("https://omahforma.com"),
+  title: "OmahForma Living Studio | Interior Custom Yogyakarta",
   description:
-    "Interior custom kitchen set, backdrop TV, wardrobe, dan desain rumah modern di Yogyakarta.",
+    "Jasa interior custom di Yogyakarta: kitchen set, wardrobe, backdrop TV, partisi, dan furniture built-in. Desain sesuai ruang, produksi sendiri, finishing rapi.",
+
+  icons: {
+  icon: [
+    { url: "/favicon.ico" },
+    { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
+    { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+  ],
+  apple: "/apple-touch-icon.png",
+  other: [
+    {
+      rel: "android-chrome",
+      url: "/android-chrome-192x192.png",
+    },
+    {
+      rel: "android-chrome",
+      url: "/android-chrome-512x512.png",
+    },
+  ],
+},
+
   keywords: [
-    "interior jogja",
-    "kitchen set yogyakarta",
-    "backdrop tv minimalis",
+    "interior custom Yogyakarta",
+    "kitchen set Yogyakarta",
+    "wardrobe custom",
+    "backdrop TV",
+    "furniture built-in",
+    "OmahForma Living Studio",
   ],
   openGraph: {
-    title: "OmahForma Living Studio",
-    description: "Interior custom modern dan fungsional",
+    title: "OmahForma Living Studio | Interior Custom Yogyakarta",
+    description:
+      "Kitchen set, wardrobe, backdrop TV, dan interior custom sesuai kebutuhan ruang Anda.",
     url: "https://omahforma.com",
-    siteName: "OmahForma",
+    siteName: "OmahForma Living Studio",
+    locale: "id_ID",
+    type: "website",
     images: [
       {
-        url: "/og-image.jpg",
-        width: 1200,
-        height: 630,
+        url: "/image/hero/hero-kitchen.jpg",
+        width: 1600,
+        height: 1738,
+        alt: "Kitchen set custom OmahForma Living Studio",
       },
     ],
-    type: "website",
+  },
+  robots: {
+    index: true,
+    follow: true,
   },
 };
 
