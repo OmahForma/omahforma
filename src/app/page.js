@@ -300,27 +300,27 @@ const [openFaq, setOpenFaq] = useState(null);
         title: "Kitchen Set",
         desc: "Dapur modern, rapih, dan fungsional.",
         images: [
-          "/image/portfolio/kitchen/kitchen-1.jpg",
-          "/image/portfolio/kitchen/kitchen-2.jpg",
-          "/image/portfolio/kitchen/kitchen-3.jpg",
+          "/image/portfolio/kitchen/01-kitchen.jpg",
+          "/image/portfolio/kitchen/02-kitchen.jpg",
+          "/image/portfolio/kitchen/03-kitchen.jpg",
         ],
       },
       {
         title: "Backdrop TV",
         desc: "Ruang keluarga lebih elegan.",
         images: [
-          "/image/portfolio/tv-cabinet/backdrop-1.jpg",
-          "/image/portfolio/tv-cabinet/backdrop-2.jpg",
-          "/image/portfolio/tv-cabinet/backdrop-3.jpg",
+          "/image/portfolio/tv-cabinet/01-backdrop.jpg",
+          "/image/portfolio/tv-cabinet/02-backdrop.jpg",
+          "/image/portfolio/tv-cabinet/03-backdrop.jpg",
         ],
       },
       {
         title: "Bedroom Set",
         desc: "Kamar nyaman dan minimalis.",
         images: [
-          "/image/portfolio/bedroom/bedroom-1.jpg",
-          "/image/portfolio/bedroom/bedroom-2.jpg",
-          "/image/portfolio/bedroom/bedroom-3.jpg",
+          "/image/portfolio/bedroom/01-bedroom.jpg",
+          "/image/portfolio/bedroom/02-bedroom.jpg",
+          "/image/portfolio/bedroom/03-bedroom.jpg",
         ],
       },
     ].map((project, i) => (
